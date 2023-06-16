@@ -90,7 +90,7 @@ model.compile(
 model.fit(
   train_ds,
   validation_data=val_ds,
-  epochs=2,
+  epochs=25,
   batch_size=batch_size
 )
 
