@@ -14,7 +14,6 @@ t0 = time.time()
 # Resize the images
 new_size = (224, 224)  # Specify the new size you want for the images
 
-
 def data_generator(images, labels, batch_size):
     num_samples = images.shape[0]
     num_batches = num_samples // batch_size
@@ -83,8 +82,8 @@ model.fit(train_generator,
 model.evaluate(test_generator,
                steps=test_ds.shape[0] // batch_size)
 
-
 # Save the model
+# doesn't work for tensorflow v2.6.0
 #model.save_weights('saved_models/cifar10_weights.h5')
 #model.save('saved_models/cifar10')
 

@@ -14,7 +14,6 @@ t0 = time.time()
 # Resize the images
 new_size = (224, 224)  # Specify the new size you want for the images
 
-
 def data_generator(images, labels, batch_size):
     num_samples = images.shape[0]
     num_batches = num_samples // batch_size
@@ -41,10 +40,6 @@ test_labels = to_categorical(test_labels, num_classes=num_classes)
 batch_size = 32
 train_generator = data_generator(train_ds, train_labels, batch_size)
 test_generator = data_generator(test_ds, test_labels, batch_size)
-
-# Preprocess input
-#train_ds = preprocess_input(train_ds)
-#test_ds = preprocess_input(test_ds)
 
 # Load the pre-trained VGG-16 model without the top classification layer
 vgg16 = VGG16(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
@@ -78,8 +73,8 @@ model.fit(train_generator,
 model.evaluate(test_generator,
                steps=test_ds.shape[0] // batch_size)
 
-
 # Save the model
+# doesn't work for tensorflow v2.6.0
 #model.save_weights('saved_models/cifar10_weights.h5')
 #model.save('saved_models/cifar10')
 

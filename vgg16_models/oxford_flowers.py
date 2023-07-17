@@ -95,6 +95,7 @@ model.fit(
 )
 
 # Save the model
+# doesn't work for tensorflow v2.6.0
 #model.save_weights('saved_models/oxford_flowers/weights.h5')
 #model.save('saved_models/oxford_flowers/model')
 

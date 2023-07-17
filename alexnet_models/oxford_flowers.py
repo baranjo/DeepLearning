@@ -34,11 +34,6 @@ test_ds = keras.utils.image_dataset_from_directory(
   batch_size=batch_size
 )
 
-
-#AUTOTUNE = tf.data.AUTOTUNE
-#train_ds = train_ds.cache().prefetch(buffer_size=AUTOTUNE)
-#val_ds = val_ds.cache().prefetch(buffer_size=AUTOTUNE)
-
 num_classes = len(os.listdir(data_dir))
 
 opt = keras.optimizers.Adam(learning_rate=0.001)
@@ -83,12 +78,8 @@ model.fit(
 #    validation_steps=test_ds.cardinality().numpy()
 )
 
-
-
-
-
-
 # Save the model
+# doesn't work for tensorflow v2.6.0
 #model.save_weights('saved_models/oxford_flowers/weights.h5')
 #model.save('saved_models/oxford_flowers/model')
 
